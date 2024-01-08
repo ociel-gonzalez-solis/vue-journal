@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  bootstrap:
+    specifier: 5.3.2
+    version: 5.3.2(@popperjs/core@2.11.8)
   core-js:
     specifier: ^3.8.3
     version: 3.35.0
@@ -14,6 +17,9 @@ dependencies:
   vue-router:
     specifier: ^4.0.3
     version: 4.2.5(vue@3.4.5)
+  vuex:
+    specifier: ^4.0.2
+    version: 4.0.2(vue@3.4.5)
 
 devDependencies:
   '@babel/core':
@@ -36,7 +42,7 @@ devDependencies:
     version: 5.0.8(@vue/cli-service@5.0.8)(@vue/vue3-jest@27.0.0)(jest@27.5.1)
   '@vue/cli-service':
     specifier: ~5.0.0
-    version: 5.0.8(vue@3.4.5)
+    version: 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
   '@vue/test-utils':
     specifier: ^2.0.0-0
     version: 2.4.3(vue@3.4.5)
@@ -55,6 +61,12 @@ devDependencies:
   jest:
     specifier: ^27.0.5
     version: 27.5.1
+  sass:
+    specifier: ^1.69.7
+    version: 1.69.7
+  sass-loader:
+    specifier: '10'
+    version: 10.5.2(sass@1.69.7)(webpack@5.89.0)
 
 packages:
 
@@ -1742,6 +1754,10 @@ packages:
     resolution: {integrity: sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ==}
     dev: true
 
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+
   /@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
     dependencies:
@@ -2213,7 +2229,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.7
       '@vue/babel-preset-app': 5.0.8(@babel/core@7.23.7)(core-js@3.35.0)(vue@3.4.5)
-      '@vue/cli-service': 5.0.8(vue@3.4.5)
+      '@vue/cli-service': 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
       '@vue/cli-shared-utils': 5.0.8
       babel-loader: 8.3.0(@babel/core@7.23.7)(webpack@5.89.0)
       thread-loader: 3.0.4(webpack@5.89.0)
@@ -2235,7 +2251,7 @@ packages:
       '@vue/cli-service': ^3.0.0 || ^4.0.0 || ^5.0.0-0
       eslint: '>=7.5.0'
     dependencies:
-      '@vue/cli-service': 5.0.8(vue@3.4.5)
+      '@vue/cli-service': 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
       '@vue/cli-shared-utils': 5.0.8
       eslint: 7.32.0
       eslint-webpack-plugin: 3.2.0(eslint@7.32.0)(webpack@5.89.0)
@@ -2255,7 +2271,7 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@vue/cli-service': 5.0.8(vue@3.4.5)
+      '@vue/cli-service': 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
       '@vue/cli-shared-utils': 5.0.8
     transitivePeerDependencies:
       - encoding
@@ -2280,7 +2296,7 @@ packages:
       '@babel/core': 7.23.7
       '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.23.7)
       '@types/jest': 27.5.2
-      '@vue/cli-service': 5.0.8(vue@3.4.5)
+      '@vue/cli-service': 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
       '@vue/cli-shared-utils': 5.0.8
       '@vue/vue3-jest': 27.0.0(@babel/core@7.23.7)(babel-jest@27.5.1)(jest@27.5.1)(vue@3.4.5)
       babel-jest: 27.5.1(@babel/core@7.23.7)
@@ -2299,10 +2315,10 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@vue/cli-service': 5.0.8(vue@3.4.5)
+      '@vue/cli-service': 5.0.8(sass-loader@10.5.2)(vue@3.4.5)
     dev: true
 
-  /@vue/cli-service@5.0.8(vue@3.4.5):
+  /@vue/cli-service@5.0.8(sass-loader@10.5.2)(vue@3.4.5):
     resolution: {integrity: sha512-nV7tYQLe7YsTtzFrfOMIHc5N2hp5lHG2rpYr0aNja9rNljdgcPZLyQRb2YRivTHqTv7lI962UXFURcpStHgyFw==}
     engines: {node: ^12.0.0 || >= 14.0.0}
     hasBin: true
@@ -2376,6 +2392,7 @@ packages:
       postcss: 8.4.33
       postcss-loader: 6.2.1(postcss@8.4.33)(webpack@5.89.0)
       progress-webpack-plugin: 1.0.16(webpack@5.89.0)
+      sass-loader: 10.5.2(sass@1.69.7)(webpack@5.89.0)
       ssri: 8.0.1
       terser-webpack-plugin: 5.3.10(webpack@5.89.0)
       thread-loader: 3.0.4(webpack@5.89.0)
@@ -3227,6 +3244,14 @@ packages:
   /boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: true
+
+  /bootstrap@5.3.2(@popperjs/core@2.11.8):
+    resolution: {integrity: sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.8
+    dependencies:
+      '@popperjs/core': 2.11.8
+    dev: false
 
   /brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -5259,6 +5284,10 @@ packages:
   /ignore@5.3.0:
     resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
     engines: {node: '>= 4'}
+    dev: true
+
+  /immutable@4.3.4:
+    resolution: {integrity: sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==}
     dev: true
 
   /import-fresh@3.3.0:
@@ -7673,6 +7702,41 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
+  /sass-loader@10.5.2(sass@1.69.7)(webpack@5.89.0):
+    resolution: {integrity: sha512-vMUoSNOUKJILHpcNCCyD23X34gve1TS7Rjd9uXHeKqhvBG39x6XbswFDtpbTElj6XdMFezoWhkh5vtKudf2cgQ==}
+    engines: {node: '>= 10.13.0'}
+    peerDependencies:
+      fibers: '>= 3.1.0'
+      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+      sass: ^1.3.0
+      webpack: ^4.36.0 || ^5.0.0
+    peerDependenciesMeta:
+      fibers:
+        optional: true
+      node-sass:
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      klona: 2.0.6
+      loader-utils: 2.0.4
+      neo-async: 2.6.2
+      sass: 1.69.7
+      schema-utils: 3.3.0
+      semver: 7.5.4
+      webpack: 5.89.0
+    dev: true
+
+  /sass@1.69.7:
+    resolution: {integrity: sha512-rzj2soDeZ8wtE2egyLXgOOHQvaC2iosZrkF6v3EUG+tBwEvhqUCzm0VP3k9gHF9LXbSrRhT5SksoI56Iw8NPnQ==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.4
+      source-map-js: 1.0.2
+    dev: true
+
   /saxes@5.0.1:
     resolution: {integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==}
     engines: {node: '>=10'}
@@ -8671,6 +8735,15 @@ packages:
       '@vue/runtime-dom': 3.4.5
       '@vue/server-renderer': 3.4.5(vue@3.4.5)
       '@vue/shared': 3.4.5
+
+  /vuex@4.0.2(vue@3.4.5):
+    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==}
+    peerDependencies:
+      vue: ^3.0.2
+    dependencies:
+      '@vue/devtools-api': 6.5.1
+      vue: 3.4.5
+    dev: false
 
   /w3c-hr-time@1.0.2:
     resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
