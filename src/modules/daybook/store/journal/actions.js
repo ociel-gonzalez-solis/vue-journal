@@ -18,6 +18,15 @@ export const loadEntries = async ({ commit }) => {
   commit('setEntries', entries);
 };
 
-export const updateEntry = async (/*{commit}*/) => {};
+export const updateEntry = async ({ commit }, entry) => {
+  console.log(entry);
+
+  const {date, picture, texto} = entry;
+  const dataToSave             = {date, picture, texto};
+
+  const res = await journalApi.put(`/entries/${entry.id}.json`, dataToSave);
+  console.log(res);
+  commit("updateEntry", {...entry});
+};
 
 export const createEntry = async (/*{commit}*/) => {};
