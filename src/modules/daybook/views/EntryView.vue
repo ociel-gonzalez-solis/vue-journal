@@ -2,9 +2,9 @@
   <template v-if="entry">
     <div class="entry-title d-flex justify-content-between p-2">
       <div>
-        <span class="text-success fs-3 fw-bold">15</span>
-        <span class="mx-1 fs-3">Julio</span>
-        <span class="mx-2 fs-4 fw-light">2024</span>
+        <span class="text-success fs-3 fw-bold">{{day}}</span>
+        <span class="mx-1 fs-3">{{month}}</span>
+        <span class="mx-2 fs-4 fw-light">{{year}}</span>
       </div>
     
       <div>
@@ -59,17 +59,31 @@ export default {
   methods: {
     ...mapActions('journal', ['updateEntry']),
     loadEntry(){
-      const entry = this.getEntryById(this.id);
+      let entry;
 
-      if (!entry) return this.$router.push({name: 'no-entry'});
+      if (this.id === 'new') {
+        entry = {
+          text: '',
+          date: new Date().getTime()
+        }
+      } else {
+         entry = this.getEntryById(this.id);
+        if (!entry) return this.$router.push({name: 'no-entry'});
+      }
+
 
       this.entry = entry;
 
       console.log(entry);
     },
     async saveEntry(){
-      console.log('Guardando entrada');
-      this.updateEntry(this.entry);
+      if (this.entry.id) {
+        console.log('Guardando entrada');
+        await this.updateEntry(this.entry);
+      } else {
+        // Crear una nueva entrada
+        console.log('Post de una nueva entrada');
+      }
     }
   },
   computed: {
