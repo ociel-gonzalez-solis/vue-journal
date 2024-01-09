@@ -14,4 +14,6 @@ export const updateEntry = (state, entry) => {
     state.entries[idx] = entry;
 };
 
-export const createEntry = (/*state*/) => {};
+export const createEntry = (state, entry) => {
+    state.entries = [entry, ...state.entries];
+};
