@@ -39,6 +39,8 @@
 import { defineAsyncComponent } from "vue";
 import { mapGetters, mapActions } from "vuex";
 
+import Swal from 'sweetalert2'
+
 import getDayMonthYear from '../helpers/dayMonthYear.js';
 
 export default {
@@ -77,6 +79,12 @@ export default {
       console.log(entry);
     },
     async saveEntry(){
+      new Swal({
+        title            : 'Espere por favor',
+        allowOutsideClick: false,
+      })
+      Swal.showLoading();
+
       if (this.entry.id) {
         console.log('Guardando entrada');
         await this.updateEntry(this.entry);
@@ -87,11 +95,32 @@ export default {
         console.log(id);
 
         this.$router.push({name: 'entry', params: {id}});
+
+        Swal.fire('Guardando', 'Entrada registrada con exito', 'success')
       }
     },
     async onDeleteEntry(){
-        await this.deleteEntry(this.entry.id);
-        this.$router.push({name: 'no-entry'});
+        const { isConfirmed } = await Swal.fire({
+        title            : 'Esta seguro?',
+        text             : 'Una vez borrado, no se podra recuperar',
+        showDenyButton   : true,
+        confirmButtonText: 'Si, estoy seguro',
+        })
+
+        if (isConfirmed) {
+          new Swal({
+            title            : 'Espere por favor',
+            allowOutsideClick: false,
+          });
+
+          Swal.showLoading();
+
+          await this.deleteEntry(this.entry.id);
+          this.$router.push({name: 'no-entry'});
+          Swal.fire('Eliminado', '', 'success')
+        }
+
+        // console.log({result});
     }
   },
   computed: {

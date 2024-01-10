@@ -14,6 +14,9 @@ dependencies:
   core-js:
     specifier: ^3.8.3
     version: 3.35.0
+  sweetalert2:
+    specifier: ^11.10.2
+    version: 11.10.2
   vue:
     specifier: ^3.2.13
     version: 3.4.5
@@ -8267,6 +8270,10 @@ packages:
       picocolors: 1.0.0
       stable: 0.1.8
     dev: true
+
+  /sweetalert2@11.10.2:
+    resolution: {integrity: sha512-BYlIxGw6OF9Rw2z1wlnh1U+fvHHkvtg4BGyimV9nZxQRGvCBfx9uonxgwuYpJuYqCtM+2W1KOm8iMIEb/2v7Hg==}
+    dev: false
 
   /symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
