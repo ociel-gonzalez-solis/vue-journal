@@ -8,12 +8,20 @@
       </div>
     
       <div>
+        <input
+          type="file" 
+          ref="imageSelector"
+          @change="onselectedImage" 
+          v-show="false"
+          accept="image/jpeg, image/png"
+        >
+
         <button v-if="entry.id" @click="onDeleteEntry" class="btn btn-danger mx-2">
           Borrar
           <i class="fa fa-trash-alt"></i>
         </button>
     
-        <button class="btn btn-primary">
+        <button @click="onSelectImage" class="btn btn-primary">
           Subir Foto
           <i class="fa fa-upload"></i>
         </button>
@@ -28,8 +36,15 @@
   </template>
 
   <Fab icon="fa-save" @on:click="saveEntry" />
-  <img
+  <!-- <img
     src="http://www.diario26.com/media/image/2018/09/21/399543.jpg"
+    alt="entry-picture"
+    class="img-thumbnail"
+  /> -->
+
+  <img
+    v-if="localImage"
+    :src="localImage"
     alt="entry-picture"
     class="img-thumbnail"
   />
@@ -55,7 +70,9 @@ export default {
   },
   data() {
     return {
-      entry: null
+      entry     : null,
+      localImage: null,
+      file      : null,
     }
   },
   methods: {
@@ -121,6 +138,28 @@ export default {
         }
 
         // console.log({result});
+    },
+    onselectedImage({target}){
+      const file = target.files[0];
+      console.log(file);
+
+      if (!file) {
+        this.localImage = null;
+        this.file       = null;
+        return
+      }
+
+      this.file = file;
+
+      const rf = new FileReader();
+      rf.onload = () => this.localImage = rf.result;
+      rf.readAsDataURL(file);
+
+    },
+    onSelectImage(){
+      // console.log(this.$refs);
+      this.$refs.imageSelector.click();
+      document.querySelector('input').click();
     }
   },
   computed: {
