@@ -36,11 +36,12 @@
   </template>
 
   <Fab icon="fa-save" @on:click="saveEntry" />
-  <!-- <img
-    src="http://www.diario26.com/media/image/2018/09/21/399543.jpg"
+  <img
+    v-if="entry.picture && !localImage"
+    :src="entry.picture"
     alt="entry-picture"
     class="img-thumbnail"
-  /> -->
+  />
 
   <img
     v-if="localImage"
@@ -57,6 +58,7 @@ import { mapGetters, mapActions } from "vuex";
 import Swal from 'sweetalert2'
 
 import getDayMonthYear from '../helpers/dayMonthYear.js';
+import uploadImage from "../helpers/uploadImage";
 
 export default {
   props: {
@@ -78,6 +80,8 @@ export default {
   methods: {
     ...mapActions('journal', ['updateEntry','createEntry', 'deleteEntry']),
     loadEntry(){
+      this.localImage = null;
+      this.file       = null;
       let entry;
 
       if (this.id === 'new') {
@@ -101,6 +105,10 @@ export default {
         allowOutsideClick: false,
       })
       Swal.showLoading();
+
+      const picture = await uploadImage(this.file);
+
+      this.entry.picture = picture;
 
       if (this.entry.id) {
         console.log('Guardando entrada');
@@ -183,8 +191,11 @@ export default {
     this.loadEntry();
   },
   watch: {
-    id(){
-      this.loadEntry();
+    id(value, oldValue) {
+        this.loadEntry()
+        if(value !== oldValue) {
+            this.localImage = null
+        }
     }
   }
 };
