@@ -43,15 +43,16 @@ export default {
     const { createUser } = useAuth();
 
     const useForm = ref({
-      name    : '',
-      email   : '',
-      password: '',
+      name: 'Fernando',
+      email: 'fernando@gmail.com',
+      password: '123456',
     });
 
     return {
       useForm,
       onSubmit: async () => {
-        createUser(useForm.value);
+        const { ok, message } = await createUser(useForm.value);
+        console.log(ok, message);
       }
     }
   }
