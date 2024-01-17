@@ -4,7 +4,7 @@ import * as getters from "./getters";
 import * as mutations from "./mutations";
 
 const AuthModule = {
-    namespace: true,
+    namespaced: true,
     actions,
     getters,
     mutations,

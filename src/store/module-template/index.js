@@ -4,7 +4,7 @@ import * as getters from "./getters";
 import * as mutations from "./mutations";
 
 const myCustomModule = {
-    namespace: true,
+    namespaced: true,
     actions,
     getters,
     mutations,
